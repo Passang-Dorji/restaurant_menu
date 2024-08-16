@@ -33,7 +33,7 @@ defmodule RestaurantMenuWeb.Endpoint do
     plug Phoenix.CodeReloader
     plug Phoenix.Ecto.CheckRepoStatus, otp_app: :restaurant_menu
   end
-
+  plug CORSPlug
   plug Phoenix.LiveDashboard.RequestLogger,
     param_key: "request_logger",
     cookie_key: "request_logger"

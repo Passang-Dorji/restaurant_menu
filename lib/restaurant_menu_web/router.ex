@@ -17,6 +17,7 @@ defmodule RestaurantMenuWeb.Router do
   scope "/", RestaurantMenuWeb do
     pipe_through :browser
 
+    get "/restaurants/search", RestaurantController, :search
     get "/", PageController, :home
   end
 
@@ -25,6 +26,7 @@ defmodule RestaurantMenuWeb.Router do
     pipe_through :api
     resources "/restaurants", RestaurantController, except: [:new, :edit]
     resources "/dishes", DishController, except: [:new, :edit]
+    resources "/prices", PriceController, except: [:new, :edit]
   end
 
 

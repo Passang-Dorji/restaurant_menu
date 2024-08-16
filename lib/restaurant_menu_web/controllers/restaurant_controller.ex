@@ -25,6 +25,11 @@ defmodule RestaurantMenuWeb.RestaurantController do
     render(conn, :show, restaurant: restaurant)
   end
 
+  def search(conn, %{"name" => name}) do
+    restaurants = Restaurants.search_restaurant_by_name(name)
+    render(conn, "index.json", restaurants: restaurants)
+  end
+
   def update(conn, %{"id" => id, "restaurant" => restaurant_params}) do
     restaurant = Restaurants.get_restaurant!(id)
 

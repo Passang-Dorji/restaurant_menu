@@ -37,6 +37,12 @@ defmodule RestaurantMenu.Restaurants do
   """
   def get_restaurant!(id), do: Repo.get!(Restaurant, id)
 
+   def search_restaurant_by_name(name) do
+    query = from r in Restaurant,
+      where: ilike(r.name, ^"%#{name}%")
+    Repo.all(query)
+   end
+
   @doc """
   Creates a restaurant.
 

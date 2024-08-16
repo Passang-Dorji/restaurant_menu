@@ -19,7 +19,8 @@ defmodule RestaurantMenuWeb.DishJSON do
     %{
       id: dish.id,
       name: dish.name,
-      description: dish.description
+      description: dish.description,
+      restaurant_id: dish.restaurant_id,
     }
   end
 end

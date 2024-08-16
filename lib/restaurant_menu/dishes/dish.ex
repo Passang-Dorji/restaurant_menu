@@ -8,13 +8,14 @@ defmodule RestaurantMenu.Dishes.Dish do
     field :name, :string
     field :description, :string
     belongs_to :restaurant, RestaurantMenu.Restaurants.Restaurant
+    has_many :prices, RestaurantMenu.Prices.Price
     timestamps(type: :utc_datetime)
   end
 
   @doc false
   def changeset(dish, attrs) do
     dish
-    |> cast(attrs, [:name, :description])
-    |> validate_required([:name, :description])
+    |> cast(attrs, [:name, :description, :restaurant_id])
+    |> validate_required([:name, :description, :restaurant_id])
   end
 end

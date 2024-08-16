@@ -35,6 +35,15 @@ defmodule RestaurantMenu.Dishes do
       ** (Ecto.NoResultsError)
 
   """
+  def get_dish_by_restaurant_id(restaurant_id) do
+    query = from(d in Dish,
+      where: d.restaurant_id == ^restaurant_id
+    )
+    Repo.all(query)
+  end
+
+
+
   def get_dish!(id), do: Repo.get!(Dish, id)
 
   @doc """
