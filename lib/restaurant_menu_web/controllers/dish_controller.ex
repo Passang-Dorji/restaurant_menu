@@ -10,10 +10,11 @@ defmodule RestaurantMenuWeb.DishController do
     dishes = Dishes.get_dish_by_restaurant_id(restaurant_id)
     render(conn, :index, dishes: dishes)
   end
-  # def index(conn, _params) do
-  #   dishes = Dishes.list_dishes()
-  #   render(conn, :index, dishes: dishes)
-  # end
+
+  def index(conn, _params) do
+    dishes = Dishes.list_dishes()
+    render(conn, :index, dishes: dishes)
+  end
 
   # def index(conn, %{"restaurant_id" => restaurant_id}) do
   #   dishes = Dishes. get_dish_by_restaurant_id(restaurant_id)
@@ -28,6 +29,7 @@ defmodule RestaurantMenuWeb.DishController do
       |> render(:show, dish: dish)
     end
   end
+
 
   def show(conn, %{"id" => id}) do
     dish = Dishes.get_dish!(id)

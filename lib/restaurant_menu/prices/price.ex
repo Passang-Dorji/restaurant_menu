@@ -16,4 +16,10 @@ defmodule RestaurantMenu.Prices.Price do
     |> cast(attrs, [:price, :dish_id])
     |> validate_required([:price, :dish_id])
   end
+
+  defimpl Jason.Encoder, for: Decimal do
+    def encode(value, opts) do
+      Jason.Encode.string(Decimal.to_string(value), opts)
+    end
+  end
 end

@@ -1,6 +1,5 @@
 defmodule RestaurantMenuWeb.DishJSON do
   alias RestaurantMenu.Dishes.Dish
-
   @doc """
   Renders a list of dishes.
   """
@@ -21,6 +20,12 @@ defmodule RestaurantMenuWeb.DishJSON do
       name: dish.name,
       description: dish.description,
       restaurant_id: dish.restaurant_id,
+      prices: Enum.map(dish.prices, &price_data/1)
+    }
+  end
+  defp price_data(%RestaurantMenu.Prices.Price{} = price) do
+    %{
+      amount: Decimal.to_string(price.price),
     }
   end
 end

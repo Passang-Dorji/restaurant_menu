@@ -17,5 +17,6 @@ defmodule RestaurantMenu.Dishes.Dish do
     dish
     |> cast(attrs, [:name, :description, :restaurant_id])
     |> validate_required([:name, :description, :restaurant_id])
+    # |> assoc_constraint(:prices)
   end
 end

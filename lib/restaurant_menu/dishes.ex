@@ -2,7 +2,6 @@ defmodule RestaurantMenu.Dishes do
   @moduledoc """
   The Dishes context.
   """
-
   import Ecto.Query, warn: false
   alias RestaurantMenu.Repo
 
@@ -37,7 +36,8 @@ defmodule RestaurantMenu.Dishes do
   """
   def get_dish_by_restaurant_id(restaurant_id) do
     query = from(d in Dish,
-      where: d.restaurant_id == ^restaurant_id
+      where: d.restaurant_id == ^restaurant_id,
+      preload: [:prices]  # Preload the price association
     )
     Repo.all(query)
   end
@@ -63,6 +63,8 @@ defmodule RestaurantMenu.Dishes do
     |> Dish.changeset(attrs)
     |> Repo.insert()
   end
+
+
 
   @doc """
   Updates a dish.
